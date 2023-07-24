@@ -1,0 +1,23 @@
+<button  mat-raised-button color="primary" class="btns" (click)="back()">Back</button>
+
+<form [formGroup]="loginForm">
+    <mat-form-field>
+        <mat-label>UserName</mat-label>
+        <input matInput formControlName="userName">
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+    </mat-form-field>
+
+    <div >
+        
+        <button  mat-raised-button color="primary" (click)="login()">Login</button>
+        <a routerLink="/owner/ownerSignUp"  mat-raised-button color="accent">New Owner</a>
+    </div>
+
+    
+</form>
+
+

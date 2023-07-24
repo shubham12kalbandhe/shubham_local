@@ -1,0 +1,14 @@
+.container{
+    background-image: url('/assets/images/hotel2.jpg');
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.btn{
+    padding: 6px 6px;
+    margin: 5px;
+}
+.btn-container{
+    position: relative;
+    top: 25px;
+}
