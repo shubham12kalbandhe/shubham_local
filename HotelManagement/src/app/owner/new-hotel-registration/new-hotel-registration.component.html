@@ -1,1 +1,89 @@
-<p>new-hotel-registration works!</p>
+
+
+<mat-card-header>
+    <h2>
+        New Hotel Registration
+    </h2>
+   
+</mat-card-header>
+
+<mat-card-content>
+    <form [formGroup]="newHotelRgistration">
+        <mat-form-field>
+         <mat-label>Owner Name</mat-label>
+         <input matInput formControlName="ownerName">
+         <mat-hint *ngIf="!newHotelRgistration.get('ownerName')?.touched">Enter Full Name Here</mat-hint>
+         <mat-error *ngIf="!newHotelRgistration.get('ownerName')?.errors?.['required']">Full Name is required</mat-error>
+         <mat-error *ngIf="!newHotelRgistration.get('ownerName')?.errors?.['pattern'] && newHotelRgistration.get('ownerName')?.errors?.['minlength']">
+            minimum 5 charactor are required</mat-error>
+        <mat-error  *ngIf="newHotelRgistration.get('ownerName')?.errors?.['pattern']" >pattern is not matched</mat-error>
+        </mat-form-field> 
+     
+        <mat-form-field>
+         <mat-label>Owner Contact</mat-label>
+         <input  matInput formControlName="ownerContact" maxlength="10">
+         <mat-hint *ngIf="!newHotelRgistration.get('ownerContact')?.touched" >Enter Owner Contact Number Here</mat-hint>
+         <mat-error *ngIf="!newHotelRgistration.get('ownerContact')?.errors?.['required']">Contact Number is required</mat-error>
+         <mat-error  *ngIf="!newHotelRgistration.get('ownerContact')?.errors?.['pattern']">only integer number</mat-error>
+        </mat-form-field><br>
+     
+        <mat-form-field>
+         <mat-label>Hotel Name</mat-label>
+         <input matInput formControlName="hotelName">
+         <mat-hint  *ngIf="!newHotelRgistration.get('hotelName')?.touched" >Hotel Name Here</mat-hint>
+         <mat-error  *ngIf="!newHotelRgistration.get('hotelName')?.errors?.['required']">Hotel Name is required</mat-error>
+        </mat-form-field>
+     
+        <mat-form-field>
+         <mat-label>Hotel Address</mat-label>
+         <input matInput formControlName="hotelAddress">
+         <mat-hint  *ngIf="!newHotelRgistration.get('hotelAddress')?.touched" >Hotel Address Here</mat-hint>
+         <mat-error  *ngIf="!newHotelRgistration.get('hotelAddress')?.errors?.['required']">Hotel Address is required</mat-error>
+        </mat-form-field><br>
+     
+        <mat-form-field>
+         <mat-label>Hotel Contact</mat-label>
+         <input matInput formControlName="hotelContact">
+         <mat-hint *ngIf="!newHotelRgistration.get('hotelContact')?.touched" >Enter hotelContact Contact Number Here</mat-hint>
+         <mat-error *ngIf="!newHotelRgistration.get('hotelContact')?.errors?.['required']">Contact Number is required</mat-error>
+         <mat-error  *ngIf="!newHotelRgistration.get('hotelContact')?.errors?.['pattern']">only integer number</mat-error>
+
+        </mat-form-field>
+     
+        <mat-form-field>
+         <mat-label>Hotel Menu</mat-label>
+         <input matInput formControlName="hotelMenu">
+         <label  for="menu"></label>
+         <select name="menu" id="menu">
+            <option value="veg">Veg</option>
+            <option value="non-veg">Non-veg</option>
+            
+         </select>
+        </mat-form-field><br>
+     
+        <mat-form-field>
+         <mat-label>Room Available</mat-label>
+         <input matInput formControlName="roomAvailable">
+         <mat-hint  *ngIf="!newHotelRgistration.get('roomAvailable')?.touched" > check room availabilty Here</mat-hint>
+        </mat-form-field>
+     
+        <mat-form-field>
+         <mat-label>Owner Check</mat-label>
+         <input matInput formControlName="ownerCheck">
+         <mat-hint  *ngIf="!newHotelRgistration.get('ownerCheck')?.touched" >Enter Owner check Here</mat-hint>
+         <mat-error  *ngIf="!newHotelRgistration.get('ownerCheck')?.errors?.['required']">Owner Check is required</mat-error>
+        </mat-form-field><br>
+     
+        <mat-form-field>
+         <mat-label>User Password</mat-label>
+         <input type="password" matInput formControlName="userPassword">
+         <mat-hint  *ngIf="!newHotelRgistration.get('userOassword')?.touched" >Enter user password Here</mat-hint>
+         <mat-error  *ngIf="!newHotelRgistration.get('userPassword')?.errors?.['required']">User Password is required</mat-error>
+        </mat-form-field><br>
+
+        <button mat-raised-button color="accent" (click)="submit()">Submit</button>
+        <button  mat-raised-button color="primary" (click)="back()">Back</button>
+       
+     </form>
+
+     </mat-card-content>

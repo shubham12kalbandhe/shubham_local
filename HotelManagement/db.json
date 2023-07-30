@@ -1,6 +1,49 @@
 {
   "admin": [],
-  "owner": [],
+  "owner": [
+    {
+      "UserName": "shubham",
+      "Email": "shubham12@gmail.com",
+      "Password": "shubham12",
+      "Gender": "male",
+      "id": 1
+    },
+    {
+      "UserName": "kalpana",
+      "Email": "kalpana@gmail.com",
+      "Password": "kalpana",
+      "Gender": "female",
+      "id": 2
+    },
+    {
+      "UserName": "Payal",
+      "Email": "payal@gmail.com",
+      "Password": "payal14",
+      "Gender": "female",
+      "id": 3
+    },
+    {
+      "UserName": "shree",
+      "Email": "",
+      "Mobile": "",
+      "Password": "",
+      "Gender": "",
+      "id": 4
+    }
+  ],
   "user": [],
-  "hotelDetails":[]
+  "hotelDetails": [
+    {
+      "ownerName": "shubham",
+      "ownerContact": "9420143484",
+      "hotelName": "hotel taj",
+      "hotelAddress": "ramdaspeth nagpur",
+      "hotelContact": "56884333",
+      "hotelMenu": "",
+      "roomAvailable": "50",
+      "ownerCheck": "true",
+      "usePassword": "",
+      "id": 1
+    }
+  ]
 }

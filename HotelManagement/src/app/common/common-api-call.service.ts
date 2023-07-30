@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CommonApiCallService {
+export class  CommonApiCallService{
    url = ' http://localhost:3000/';
   constructor(private http : HttpClient) { }
 
@@ -14,5 +14,10 @@ export class CommonApiCallService {
     let url = this.url + endPoint;
     return this.http.post(url,formData);
 
+  }
+
+  getApiCall(endPoint:string){
+    let url = this.url + endPoint;
+    return this.http.get(url);
   }
 }

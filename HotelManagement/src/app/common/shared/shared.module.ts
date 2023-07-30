@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import{ HttpClientModule} from '@angular/common/http';
@@ -18,6 +19,7 @@ import{ HttpClientModule} from '@angular/common/http';
     MatInputModule,
     MatRadioModule,
     MatCardModule,
+    MatIconModule,
     ReactiveFormsModule,
     HttpClientModule
 
@@ -27,6 +29,7 @@ import{ HttpClientModule} from '@angular/common/http';
     MatInputModule,
     MatRadioModule,
     MatCardModule,
+    MatIconModule,
     ReactiveFormsModule,
     HttpClientModule
 

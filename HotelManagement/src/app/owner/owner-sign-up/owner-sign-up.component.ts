@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import {  Router } from '@angular/router';
 import { CommonApiCallService } from 'src/app/common/common-api-call.service';
 import { CommonService } from 'src/app/common/common.service';
 
@@ -10,9 +10,10 @@ import { CommonService } from 'src/app/common/common.service';
   styleUrls: ['./owner-sign-up.component.css']
 })
 export class OwnerSignUpComponent {
-  loginForm! : FormGroup;
+  signUpForm! : FormGroup;
   journey! : string;
   postResponse : any;
+  
 
   constructor(private fb: FormBuilder ,
     private commonService :CommonService ,
@@ -27,8 +28,8 @@ export class OwnerSignUpComponent {
 
     }
     FormDetails(){
-      this.loginForm = this.fb.group({
-        name :['',[]],
+      this.signUpForm = this.fb.group({
+        name :['',[Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z ]*$'),this.whiteSpaceValidator]],
         email :['',[]],
         mobileNo :['',[]],
         password :['',[]],
@@ -38,11 +39,11 @@ export class OwnerSignUpComponent {
     }
     submit(){
      let request = {
-      UserName : this.loginForm.value.name,
-      Email : this.loginForm.value.email,
-      Mobile : this.loginForm.value.id,
-     Password : this.loginForm.value.password,
-      Gender : this.loginForm.value.gender
+      UserName : this.signUpForm.value.name?.trim(),
+      Email : this.signUpForm.value.email,
+      Mobile : this.signUpForm.value.id,
+     Password : this.signUpForm.value.password,
+      Gender : this.signUpForm.value.gender
       
      }
      this.apiCallService.postApiCall(this.journey,request).subscribe(resp =>{
@@ -51,10 +52,16 @@ export class OwnerSignUpComponent {
      })
 
     // if(this.postResponse.id){}
-     this.router.navigateByUrl('owner/ownerLogin')
+     this.router.navigateByUrl('owner/ownerSuccess');
     }
     back(){
       this.router.navigateByUrl('owner/ownerHome')
+    } 
+    whiteSpaceValidator(nameFieldValue:any){
+      let data = nameFieldValue.value;
+      let newdata = data?.trim();
+      let isValid = data.length != newdata.length;
+      return isValid ? {whiteSpace:true} : null
     }
   }
 
