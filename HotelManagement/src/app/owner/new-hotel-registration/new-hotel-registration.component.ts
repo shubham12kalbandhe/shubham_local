@@ -30,7 +30,7 @@ export class NewHotelRegistrationComponent {
         hotelMenu : ['',[Validators.required]],
         roomAvailable : ['',[Validators.required]],
         ownerCheck : ['',[Validators.required]],
-        usePassword: ['',[Validators.required]],
+        userPassword: ['',[Validators.required]],
 
       })
     }

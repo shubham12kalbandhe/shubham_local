@@ -12,6 +12,7 @@ export class OwnerSuccessComponent {
   hotelDetails: any;
   userName!: string;
   userHotelDetails:any[]=[]
+  showTable: any;
 
   constructor(private router : Router,
     private  commonApiCallService: CommonApiCallService,
@@ -27,14 +28,28 @@ export class OwnerSuccessComponent {
     this.router.navigateByUrl('owner/newHotelRegistration')
   }
 
-  myhotelDetails(){
+ async myHotelDetails(){
+    this.showTable = !this.showTable;
     let endPoint = 'hotelDetails';
-    this.commonApiCallService.getApiCall(endPoint).subscribe(data=>{
-      this.hotelDetails = data;
-    })
+   // this.commonApiCallService.getApiCall(endPoint).subscribe(data=>{
+    //  this.hotelDetails = data;
+   // })
+     this.hotelDetails  = await this.commonApiCallService.getApiCall(endPoint).toPromise()
     console.log('hotelDetails',this.hotelDetails);
     if(this.hotelDetails){
       this.hotelDetailsByOwner();
+      if(this.userHotelDetails.length > 0){
+
+      }
+      else{
+        this.commonService.warningToaster('no any hotel available','warning',{
+          timeOut:10000,
+          positionClass:'toast-top-center'
+        })
+      }
+    }
+    else{
+      alert('no owner data available')
     }
     
   }
@@ -46,6 +61,16 @@ export class OwnerSuccessComponent {
     })
     console.log('this.userHotelDetails',this.userHotelDetails);
     
+  }
+ async delete(id:number){
+   await this.commonApiCallService.deleteApiCall('hotelDetails',id).toPromise();
+   this.showTable = !this.showTable;
+   this.myHotelDetails();
+  }
+
+  edit(id:number){
+    this.commonService.id = id;
+    this.router.navigateByUrl('owner/newHotelRegistration')
   }
 
 }

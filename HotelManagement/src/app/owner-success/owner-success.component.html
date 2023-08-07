@@ -1,2 +1,30 @@
 <button  mat-raised-button color="accent" (click)="newHotelRegistration()">New Hotel Registration</button>
-<button  mat-raised-button color="accent">My Hotel List</button>
+<button  mat-raised-button color="accent" (click)="myHotelDetails()">My Hotel Details</button>
+
+
+<div *ngIf="showTable">
+    <table *ngIf="userHotelDetails.length > 0 && showTable">
+        <tr>
+            <th>Owner Name</th>
+            <th>Owner Contact</th>
+            <th>Hotel Name</th>
+            <th>Hotel Address</th>
+            <th>HotelContact</th>
+            <th>Hotel Menu</th>
+            <th>Delete</th>
+            <th>Edit</th>
+
+        </tr>
+
+        <tr *ngFor="let hotelData of userHotelDetails">
+            <td>{{hotelData.ownerName}}</td>
+            <td>{{hotelData.ownerContact}}</td>
+            <td>{{hotelData.hotelName}}</td>
+            <td>{{hotelData.hotelAddress}}</td>
+            <td>{{hotelData.hotelContact}}</td>
+            <td>{{hotelData.hotelMenu}}</td>
+            <td><mat-icon (click)="delete(hotelData.id)">delete</mat-icon></td>
+            <td> <mat-icon>mode_edit</mat-icon></td>
+        </tr>
+    </table>
+</div>

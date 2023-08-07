@@ -32,12 +32,12 @@ export class OwnerSignUpComponent {
         name :['',[Validators.required,Validators.minLength(5),Validators.pattern('[a-zA-Z ]*$'),this.whiteSpaceValidator]],
         email :['',[]],
         mobileNo :['',[]],
-        password :['',[]],
+        password :['',[Validators]],
         gender :['',[]],
         
       })
     }
-    submit(){
+    async submit(){
      let request = {
       UserName : this.signUpForm.value.name?.trim(),
       Email : this.signUpForm.value.email,
@@ -46,11 +46,11 @@ export class OwnerSignUpComponent {
       Gender : this.signUpForm.value.gender
       
      }
-     this.apiCallService.postApiCall(this.journey,request).subscribe(resp =>{
-      console.log(resp);
-      this.postResponse = resp;
-     })
-
+    // this.apiCallService.postApiCall(this.journey,request).subscribe(resp =>{
+     // console.log(resp);
+    //  this.postResponse = resp;
+    // })
+     this.postResponse = await this.apiCallService.postApiCall(this.journey,request).toPromise()
     // if(this.postResponse.id){}
      this.router.navigateByUrl('owner/ownerSuccess');
     }

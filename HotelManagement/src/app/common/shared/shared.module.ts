@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import{ HttpClientModule} from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -21,7 +22,8 @@ import{ HttpClientModule} from '@angular/common/http';
     MatCardModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
 
   ],
   exports:[

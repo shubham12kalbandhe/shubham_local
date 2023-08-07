@@ -44,6 +44,28 @@
       "ownerCheck": "true",
       "usePassword": "",
       "id": 1
+    },
+    {
+      "ownerName": "ashish dhomne",
+      "ownerContact": "9334363636",
+      "hotelName": "Radison Blue",
+      "hotelAddress": "chatrapati sq.nagpur",
+      "hotelContact": "35535636",
+      "hotelMenu": "",
+      "roomAvailable": "100",
+      "ownerCheck": "available",
+      "id": 2
+    },
+    {
+      "ownerName": "kalpana kalbandhe",
+      "ownerContact": "936326272",
+      "hotelName": "rainbow hotel",
+      "hotelAddress": "nagpur",
+      "hotelContact": "3464666",
+      "hotelMenu": "",
+      "roomAvailable": "100",
+      "ownerCheck": "available",
+      "id": 3
     }
   ]
 }
