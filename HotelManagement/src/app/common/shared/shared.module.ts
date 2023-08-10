@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import{ HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -24,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    MatDialogModule
 
   ],
   exports:[
@@ -33,7 +35,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatCardModule,
     MatIconModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
 
   ]
 })

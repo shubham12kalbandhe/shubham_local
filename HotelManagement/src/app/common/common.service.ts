@@ -9,7 +9,8 @@ export class CommonService {
    journey!: string;
   userName!: string;
   forgetPassword! :boolean;
-  id!: number;
+  id!: any;
+  dataById:any;
   constructor(private toastrService :ToastrService) { }
 
   warningToaster(msg:any,title:any,configuratin:any){

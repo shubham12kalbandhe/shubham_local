@@ -5,13 +5,15 @@ import { OwnerHomeComponent } from './owner-home/owner-home.component';
 import { OwnerSignUpComponent } from './owner-sign-up/owner-sign-up.component';
 import { SharedModule } from '../common/shared/shared.module';
 import { NewHotelRegistrationComponent } from './new-hotel-registration/new-hotel-registration.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
   declarations: [
     OwnerHomeComponent,
     OwnerSignUpComponent,
-    NewHotelRegistrationComponent
+    NewHotelRegistrationComponent,
+    DialogComponent
   ],
   imports: [
     CommonModule,

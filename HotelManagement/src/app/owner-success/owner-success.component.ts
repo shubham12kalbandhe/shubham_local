@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonApiCallService } from '../common/common-api-call.service';
 import { CommonService } from '../common/common.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../owner/dialog/dialog.component';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-owner-success',
@@ -13,10 +16,11 @@ export class OwnerSuccessComponent {
   userName!: string;
   userHotelDetails:any[]=[]
   showTable: any;
+  dataById: any;
 
   constructor(private router : Router,
     private  commonApiCallService: CommonApiCallService,
-    private commonService :CommonService ){}
+    private commonService :CommonService, public dialog: MatDialog ){}
 
     ngOnInit(){
       console.log('oninit calling....');
@@ -62,15 +66,35 @@ export class OwnerSuccessComponent {
     console.log('this.userHotelDetails',this.userHotelDetails);
     
   }
- async delete(id:number){
-   await this.commonApiCallService.deleteApiCall('hotelDetails',id).toPromise();
-   this.showTable = !this.showTable;
-   this.myHotelDetails();
-  }
+  delete(id:number){
+  const dialogRef =this.dialog.open(DialogComponent, {
+    width: '250px',
+    height: '250px'
+  })
 
-  edit(id:number){
-    this.commonService.id = id;
-    this.router.navigateByUrl('owner/newHotelRegistration')
+  dialogRef.afterClosed().subscribe((yesValue:any)=>{
+    if(yesValue === 'YES'){
+      this.deleteRecord(id);
+      this.showTable = !this.showTable;
+      this.myHotelDetails();
+    }
+  })
+
+}
+
+async deleteRecord(id:number){
+  await this.commonApiCallService.deleteApiCall('hotelDetails',id).toPromise();
+   
+}
+
+  
+  
+
+ async edit(id:number){
+  this.commonService.id = id;
+  this.dataById = await this.commonApiCallService.getApiCall('hotelDetails',id ).toPromise();
+  this.commonService.dataById = this.dataById;
+  this.router.navigateByUrl('owner/newHotelRegistration')
   }
 
 }
